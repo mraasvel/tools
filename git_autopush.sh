@@ -11,8 +11,7 @@ declare -a DIRS
 DIRS[0]=~/work/codam/codam-core
 DIRS[1]=~/work/codam/practice
 DIRS[2]=~/work/tools/
-
-DIRS[4]=~/work/codam/miniRT
+DIRS[3]=~/work/codam/miniRT
 
 # COLOR CODES: [1;33m = yellow, [1;31m = red etc
 COLOR="\033[1;33m"
