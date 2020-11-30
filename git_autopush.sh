@@ -10,8 +10,7 @@ declare -a DIRS
 # Add new directories here.
 DIRS[0]=~/work/codam/codam-core
 DIRS[1]=~/work/codam/practice
-DIRS[2]=~/work/tools/libft
-DIRS[3]=~/work/tools/ft_printf
+DIRS[2]=~/work/tools/
 
 DIRS[4]=~/work/codam/miniRT
 
