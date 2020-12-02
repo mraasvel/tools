@@ -15,6 +15,7 @@ STRTOUPPER:
 		Changes all chars in string to uppercase.
 	void	ft_strtolower(char *str);
 
+	ft_free_split(char **strings); // function that frees the strings allocated by ft_split or ft_split_set.
 
 Math Functions
 
