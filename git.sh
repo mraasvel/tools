@@ -23,7 +23,12 @@ git_push()
 	DIR=$1
 	git -C $1 add $1/*
 	git -C $1 commit -a -m "automatic push"
-	git -C $1 push
+	if [ $? == 0 ]
+	then
+		git -C $1 push
+	else
+		echo -e "$COLOR""Nothing to commit.""$END_COLOR"
+	fi
 }
 
 # If first param = 'pull', execute git pull in all DIRS
