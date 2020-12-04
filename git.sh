@@ -18,7 +18,7 @@ COLOR="\033[1;33m"
 END_COLOR="\033[0;0m"
 
 # function to add all new and updated files in target directory, commit them, and push them to the default remote branch
-# Doesn't add hidden files
+# Only adds hidden files if they were already added manually before, then it pushes the updated versions.
 git_push()
 {
 	DIR=$1
