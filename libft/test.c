@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/27 17:43:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/05 17:46:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,22 @@ int	split_compare(const char *src, char *set)
 	char		**strings;
 
 	cnt++;
-	strings = ft_split_set(src, set);
+	strings = ft_split_token(src, set);
 	if (strings == NULL)
 	{
 		fprintf(stderr, "Fail at test |%d|\n", cnt);
 		return (-1);
 	}
+	print_strings(strings);
 	free_strings(strings);
-	fprintf(stderr, "Success at test |%d|\n", cnt);
+	// fprintf(stderr, "Success at test |%d|\n", cnt);
 	return (0);
 }
 
 int	main(void)
 {
-	split_compare("255.255.255.255 25", ". ");
+	split_compare("", "  ");
+	// split_compare("a\nb\n\na\nb\n", "\n\n");
+	// split_compare("255  255  255  2 5aaaasod aoisdj aosidj aosdjiao sd", "   ");
 	return (0);
 }

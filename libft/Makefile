@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/13 10:06:53 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/19 22:31:49 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/05 17:25:42 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,30 +28,23 @@ IFLAGS = -I $(IDIR)
 #VPATH
 VPATH = $(SRCDIR)
 
-.PHONY: all dependencies clean fclean re
-all: dependencies $(NAME) clear
+.PHONY: all clean fclean re
+all: $(NAME)
 
-dependencies:
+$(OBJDIR):
 	@mkdir -p obj
 
 $(NAME): $(OBJ) libft.h
-	@echo "\033[032;1m"
+	@echo -n "\033[032;1m"
 	ar rcs $@ $(OBJ)
-$(OBJDIR)/%.o: %.c
+	@echo -n "\033[0m"
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) -o $@ -c $(CFLAGS) $< $(IFLAGS)
 
-clean: red
+clean:
+	@echo "\033[031;1m"
 	rm -f $(OBJ)
+	@echo "\033[0m"
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
-
-#colors
-red:
-	@echo -n "\033[031;1m"
-green:
-	@echo -n "\033[032;1m"
-yellow:
-	@echo -n "\033[033;1m"
-clear:
-	@echo -n "\033[0m"
