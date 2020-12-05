@@ -27,6 +27,7 @@ git_push()
 	if [ $? == 0 ]
 	then
 		git -C $1 push
+		echo -e "$COLOR""Push Successfull.""$END_COLOR"
 	else
 		echo -e "$COLOR""Nothing to commit.""$END_COLOR"
 	fi
