@@ -2,18 +2,10 @@ Useful Libft Function Ideas
 
 
 Integer Conversion Functions: They can all have a "precision" parameter. (min num digits to print)
-	LongToAscii
-		char	*ft_ltoa(long nbr);
-	UIntToAscii
-		char	*ft_utoa(unsigned int nbr);
-	ULongToAscii
-		char	*ft_lutoa(unsigned long nbr);
+	LongLongToAscii
+		char	*ft_lltoa(long nbr);
 	ULLongToAscii
 		char	*ft_llutoa(unsigned long long nbr);
-STRTOUPPER:
-	void	ft_strtotupper(char *str);
-		Changes all chars in string to uppercase.
-	void	ft_strtolower(char *str);
 
 	ft_free_split(char **strings); // function that frees the strings allocated by ft_split or ft_split_set.
 
@@ -23,3 +15,15 @@ Math Functions
 	double ft_round(double x); // round double to nearest integer
 	int ft_max(int a, int b); // return largest value of 2 ints
 	int ft_min (int a, int b); // return smallest value of 2 ints
+
+
+Strings:
+	STRTOUPPER:
+		void	ft_strtotupper(char *str);
+			Changes all chars in string to uppercase.
+		void	ft_strtolower(char *str);
+	Substitute:
+		void	ft_str_sub(char *str, char c, char s);
+		Description:
+			substitute all occurances of char 'c' with char 's';
+	int ft_strcmp(const char *s1, const char *s2);
