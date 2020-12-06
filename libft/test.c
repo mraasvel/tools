@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/05 17:46:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/05 22:31:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	split_compare(const char *src, char *set)
 
 int	main(void)
 {
-	split_compare("", "  ");
+	split_compare("a\n\n\nb", "\n\n");
 	// split_compare("a\nb\n\na\nb\n", "\n\n");
 	// split_compare("255  255  255  2 5aaaasod aoisdj aosidj aosdjiao sd", "   ");
 	return (0);
