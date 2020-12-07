@@ -7,7 +7,6 @@ Integer Conversion Functions: They can all have a "precision" parameter. (min nu
 	ULLongToAscii
 		char	*ft_llutoa(unsigned long long nbr);
 
-	ft_free_split(char **strings); // function that frees the strings allocated by ft_split or ft_split_set.
 
 Math Functions
 
@@ -26,4 +25,3 @@ Strings:
 		void	ft_str_sub(char *str, char c, char s);
 		Description:
 			substitute all occurances of char 'c' with char 's';
-	int ft_strcmp(const char *s1, const char *s2);
