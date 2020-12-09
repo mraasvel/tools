@@ -6,6 +6,10 @@ Integer Conversion Functions: They can all have a "precision" parameter. (min nu
 		char	*ft_lltoa(long nbr);
 	ULLongToAscii
 		char	*ft_llutoa(unsigned long long nbr);
+	AsciitoLongLong
+		long long	ft_atol(char *s);
+	AsciitoULL
+		unsigned long long	ft_atoll(char *s);
 
 
 Math Functions
@@ -25,3 +29,4 @@ Strings:
 		void	ft_str_sub(char *str, char c, char s);
 		Description:
 			substitute all occurances of char 'c' with char 's';
+	void	ft_strrev(char *str);

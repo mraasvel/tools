@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/05 22:31:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/09 22:32:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,42 @@ int	split_compare(const char *src, char *set)
 	return (0);
 }
 
+int	memccpy_compare(const char *dst, const char *src, int c, size_t n)
+{
+	char *d1;
+	char *d2;
+	char *ret;
+	char *ft_ret;
+
+	d1 = ft_strdup(dst);
+	if (d1 == NULL)
+		return (-1);
+	d2 = ft_strdup(dst);
+	if (d2 == NULL)
+	{
+		free(d1);
+		return (-1);
+	}
+	ft_ret = ft_memccpy(d1, src, c, n);
+	ret = memccpy(d1, src, c, n);
+	if (ret == ft_ret)
+	{
+		printf("success!\n");
+	}
+	else
+	{
+		printf("failure!\n");
+		printf("%p - rl_ret\n%p - ft_ret\n\n", ret, ft_ret);
+	}
+	ft_free(2, d1, d2);
+	return (0);
+}
+
 int	main(void)
 {
-	split_compare("a\n\n\nb", "\n\n");
-	// split_compare("a\nb\n\na\nb\n", "\n\n");
-	// split_compare("255  255  255  2 5aaaasod aoisdj aosidj aosdjiao sd", "   ");
+	char	src[] = "abcde";
+	char	dest[100];
+
+	memccpy_compare("abcdefgh", "12345", '4', 5);
 	return (0);
 }

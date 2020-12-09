@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 20:36:50 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/02 15:45:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/09 22:34:23 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*src;
+	size_t	i;
 
-	src = s;
-	while (n > 0)
+	i = 0;
+	while (i < n)
 	{
-		*src = 0;
-		src++;
-		n--;
+		((unsigned char*)s)[i] = 0;
+		i++;
 	}
 }

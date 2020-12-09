@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 16:10:10 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 08:49:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/09 22:32:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 char	*ft_strdup(const char *s)
 {
 	size_t	len;
-	char	*d;
+	char	*dest;
 
 	len = ft_strlen(s);
-	d = ft_calloc(len + 1, 1);
-	if (d == 0)
-		return (0);
-	ft_memcpy(d, s, len + 1);
-	return (d);
+	dest = (char*)malloc((len + 1) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	dest[len] = '\0';
+	ft_memcpy(dest, s, len + 1);
+	return (dest);
 }
