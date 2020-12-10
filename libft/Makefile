@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/13 10:06:53 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/05 17:25:42 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/10 08:58:52 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ IDIR = .
 #compilation
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-IFLAGS = -I $(IDIR)
+IFLAGS = -I $(IDIR) -I include
 
 #VPATH
 VPATH = $(SRCDIR)

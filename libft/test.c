@@ -6,11 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/09 22:32:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/10 09:08:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <float.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -92,11 +94,37 @@ int	memccpy_compare(const char *dst, const char *src, int c, size_t n)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	src[] = "abcde";
-	char	dest[100];
+	int	fd;
+	char	*line;
+	int		ret;
+	int		cnt;
 
-	memccpy_compare("abcdefgh", "12345", '4', 5);
+	if (argc == 1)
+		fd = 0;
+	else
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			printf("open error\n");
+			return (0);
+		}
+	}
+	cnt = 0;
+	ret = 1;
+	while (ret > 0)
+	{
+		ret = ft_getline(fd, &line);
+		if (ret == -1)
+		{
+			printf("getline error\n");
+			return (0);
+		}
+		cnt++;
+		printf("%d: %s\n", cnt, line);
+		free(line);
+	}
 	return (0);
 }
