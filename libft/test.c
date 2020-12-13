@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/10 09:08:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/11 21:03:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,35 +96,13 @@ int	memccpy_compare(const char *dst, const char *src, int c, size_t n)
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	char	*line;
-	int		ret;
-	int		cnt;
+	char	*name = "Name";
 
-	if (argc == 1)
-		fd = 0;
-	else
+	for (size_t i = 0; name[i] != 0; i++)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-		{
-			printf("open error\n");
-			return (0);
-		}
+		ft_putllu_base(name[i], 16, 0, 0);
+		printf("\n");
 	}
-	cnt = 0;
-	ret = 1;
-	while (ret > 0)
-	{
-		ret = ft_getline(fd, &line);
-		if (ret == -1)
-		{
-			printf("getline error\n");
-			return (0);
-		}
-		cnt++;
-		printf("%d: %s\n", cnt, line);
-		free(line);
-	}
+	
 	return (0);
 }
