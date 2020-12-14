@@ -6,11 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 12:56:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/02 18:38:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/14 09:47:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isspace(int c)
+static int	atoi_isspace(int c)
 {
 	if (c == '\r' || c == '\f' || c == '\n'
 	|| c == '\v' || c == '\t' || c == ' ')
@@ -28,7 +28,7 @@ int			ft_atoi(const char *nptr)
 		return (0);
 	negative = 1;
 	i = 0;
-	while (ft_isspace(nptr[i]) != 0)
+	while (atoi_isspace(nptr[i]) != 0)
 		i++;
 	if (nptr[i] == '-')
 		negative = -negative;

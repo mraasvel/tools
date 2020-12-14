@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/10 09:01:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/14 09:49:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int					ft_putllu(unsigned long long nbr, int precision);
 int					ft_putllu_base(unsigned long long nbr,
 					int base, int precision, int upcase);
 char				*ft_llutoa(unsigned long long nbr, int min_len);
+unsigned long long	ft_atoull(char *str);
 
 /*
 ** math functions
