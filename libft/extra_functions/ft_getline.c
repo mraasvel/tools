@@ -80,7 +80,7 @@ static int	clear_buffer(t_buffer *buffer, char **line, int *line_size)
 	return (ret);
 }
 
-static int	read_in_fd(int fd, char **line, t_buffer *buffer, int *line_size)
+static int	fill_buffer(int fd, char **line, t_buffer *buffer, int *line_size)
 {
 	ssize_t	read_ret;
 	t_ret	clear_ret;
