@@ -24,32 +24,3 @@ void	ft_free_split(char **strings)
 	}
 	free(strings);
 }
-
-void *fuck_memory_management(size_t n)
-{
-	void *a;
-	void *b;
-	void *c;
-
-	a = malloc(n);
-	if (a == NULL)
-		return (NULL);
-	b = malloc(n);
-	if (b == NULL)
-	{
-		free(a);
-		return (NULL);
-	}
-	c = malloc(n);
-	if (c == NULL)
-	{
-		free(a);
-		free(b);
-		return (NULL);
-	}
-	// do one thing
-	free(a);
-	free(b);
-	free(c);
-	return (NULL);
-}
