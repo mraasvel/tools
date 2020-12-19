@@ -1,5 +1,5 @@
-# Program to copy libs to directory from where you called this
 #
+# Program to copy libs to directory from where you called this script
 #
 
 DIR=~/work/tools/
