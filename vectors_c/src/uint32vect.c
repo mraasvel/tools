@@ -6,14 +6,18 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:53:14 by mraasvel      #+#    #+#                 */
+<<<<<<< HEAD:vectors_c/src/uint32vect.c
 /*   Updated: 2020/12/19 21:09:50 by mraasvel      ########   odam.nl         */
+=======
+/*   Updated: 2020/12/18 16:50:15 by mraasvel      ########   odam.nl         */
+>>>>>>> 9261496d9f2f38b5b41c790f3cb1e2e4cc4dfcee:vectors_c/uint32vect.c
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "vectors.h"
 
-static void	*vect_memcpy(void *dest, void *src, size_t size)
+static void		*vect_memcpy(void *dest, void *src, size_t size)
 {
 	size_t	i;
 
@@ -48,13 +52,13 @@ t_uint32vect	*uint32vect_init(size_t initial_size)
 	return (vector);
 }
 
-void		uint32vect_free(t_uint32vect *vector)
+void			uint32vect_free(t_uint32vect *vector)
 {
 	free(vector->table);
 	free(vector);
 }
 
-static int	uint32vect_realloc(t_uint32vect *vector)
+static int		uint32vect_realloc(t_uint32vect *vector)
 {
 	size_t			new_size;
 	unsigned int	*new_table;
@@ -63,14 +67,14 @@ static int	uint32vect_realloc(t_uint32vect *vector)
 	new_table = (unsigned int*)malloc(new_size * sizeof(unsigned int));
 	if (new_table == NULL)
 		return (-1);
-	vect_memcpy(new_table, vector->table, vector->nmemb);
+	vect_memcpy(new_table, vector->table, vector->nmemb * sizeof(unsigned int));
 	free(vector->table);
 	vector->table = new_table;
 	vector->size = new_size;
 	return (0);
 }
 
-int			uint32vect_pushback(unsigned int value, t_uint32vect *vector)
+int				uint32vect_pushback(unsigned int value, t_uint32vect *vector)
 {
 	if (vector->nmemb == vector->size)
 	{

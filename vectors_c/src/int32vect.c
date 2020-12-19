@@ -6,7 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:42:09 by mraasvel      #+#    #+#                 */
+<<<<<<< HEAD:vectors_c/src/int32vect.c
 /*   Updated: 2020/12/19 21:09:43 by mraasvel      ########   odam.nl         */
+=======
+/*   Updated: 2020/12/18 16:50:31 by mraasvel      ########   odam.nl         */
+>>>>>>> 9261496d9f2f38b5b41c790f3cb1e2e4cc4dfcee:vectors_c/int32vect.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +67,7 @@ static int	int32vect_realloc(t_int32vect *vector)
 	new_table = (int*)malloc(new_size * sizeof(int));
 	if (new_table == NULL)
 		return (-1);
-	vect_memcpy(new_table, vector->table, vector->nmemb);
+	vect_memcpy(new_table, vector->table, vector->nmemb * sizeof(int));
 	free(vector->table);
 	vector->table = new_table;
 	vector->size = new_size;

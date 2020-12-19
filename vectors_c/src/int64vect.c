@@ -6,7 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:55:22 by mraasvel      #+#    #+#                 */
+<<<<<<< HEAD:vectors_c/src/int64vect.c
 /*   Updated: 2020/12/19 21:09:40 by mraasvel      ########   odam.nl         */
+=======
+/*   Updated: 2020/12/18 16:50:26 by mraasvel      ########   odam.nl         */
+>>>>>>> 9261496d9f2f38b5b41c790f3cb1e2e4cc4dfcee:vectors_c/int64vect.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +41,11 @@ t_int64vect	*int64vect_init(size_t initial_size)
 	vector = (t_int64vect*)malloc(1 * sizeof(t_int64vect));
 	if (vector == NULL)
 		return (NULL);
+<<<<<<< HEAD:vectors_c/src/int64vect.c
 	vector->table = (long long*)malloc(initial_size * sizeof(long long));
+=======
+	vector->table = (long long*)malloc(initial_size * sizeof(long));
+>>>>>>> 9261496d9f2f38b5b41c790f3cb1e2e4cc4dfcee:vectors_c/int64vect.c
 	if (vector->table == NULL)
 	{
 		free(vector);
@@ -63,14 +71,14 @@ static int	int64vect_realloc(t_int64vect *vector)
 	new_table = (long long*)malloc(new_size * sizeof(long long));
 	if (new_table == NULL)
 		return (-1);
-	vect_memcpy(new_table, vector->table, vector->nmemb);
+	vect_memcpy(new_table, vector->table, vector->nmemb * sizeof(long long));
 	free(vector->table);
 	vector->table = new_table;
 	vector->size = new_size;
 	return (0);
 }
 
-int			int64vect_pushback(long value, t_int64vect *vector)
+int			int64vect_pushback(long long value, t_int64vect *vector)
 {
 	if (vector->nmemb == vector->size)
 	{
