@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   int64vect.c                                        :+:    :+:            */
+/*   ldblvect.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/16 13:55:22 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/16 13:58:18 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/19 20:55:24 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/19 20:59:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "vectors.h"
 
-static void	*vect_memcpy(void *dest, void *src, size_t size)
+static void	*ldblvect_memcpy(void *dest, void *src, size_t n)
 {
 	size_t	i;
 
+	i = 0;
 	if (dest == src)
 		return (dest);
-	i = 0;
-	while (i < size)
+	while (i < n)
 	{
 		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
 		i++;
@@ -28,59 +28,57 @@ static void	*vect_memcpy(void *dest, void *src, size_t size)
 	return (dest);
 }
 
-t_int64vect	*int64vect_init(size_t initial_size)
+t_ldblvect	*ldblvect_init(size_t initial_size)
 {
-	t_int64vect	*vector;
+	t_ldblvect	*vector;
 
 	if (initial_size == 0)
 		initial_size = 2;
-	vector = (t_int64vect*)malloc(1 * sizeof(t_int64vect));
+	vector = malloc(initial_size * sizeof(t_ldblvect));
 	if (vector == NULL)
 		return (NULL);
-	vector->table = (long*)malloc(initial_size * sizeof(long));
+	vector->table = malloc(initial_size * sizeof(long double));
 	if (vector->table == NULL)
 	{
 		free(vector);
 		return (NULL);
 	}
-	vector->size = initial_size;
 	vector->nmemb = 0;
+	vector->size = initial_size;
 	return (vector);
 }
 
-void		int64vect_free(t_int64vect *vector)
+void		ldblvect_free(t_ldblvect *vector)
 {
 	free(vector->table);
 	free(vector);
 }
 
-static int	int64vect_realloc(t_int64vect *vector)
+static int	ldblvect_realloc(t_ldblvect *vector)
 {
-	size_t	new_size;
-	long	*new_table;
+	long double	*new_table;
 
-	new_size = vector->size * 2;
-	new_table = (long*)malloc(new_size * sizeof(long));
+	vector->size *= 2;
+	new_table = malloc(vector->size * sizeof(long double));
 	if (new_table == NULL)
 		return (-1);
-	vect_memcpy(new_table, vector->table, vector->nmemb);
+	ldblvect_memcpy(new_table, vector->table, vector->nmemb * sizeof(long double));
 	free(vector->table);
 	vector->table = new_table;
-	vector->size = new_size;
 	return (0);
 }
 
-int			int64vect_pushback(long value, t_int64vect *vector)
+int			ldblvect_pushback(t_ldblvect *vector, long double data)
 {
 	if (vector->nmemb == vector->size)
 	{
-		if (int64vect_realloc(vector) == -1)
+		if (ldblvect_realloc(vector) == -1)
 		{
-			int64vect_free(vector);
+			ldblvect_free(vector);
 			return (-1);
 		}
 	}
-	vector->table[vector->nmemb] = value;
+	vector->table[vector->nmemb] = data;
 	vector->nmemb += 1;
 	return (0);
 }
