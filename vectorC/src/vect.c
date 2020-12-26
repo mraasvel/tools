@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   vector.c                                           :+:    :+:            */
+/*   vect.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "libvect.h"
 
-static void	*vector_memcpy(void *dest, void *src, size_t n)
+static void	*vect_memcpy(void *dest, void *src, size_t n)
 {
 	size_t	i;
 
@@ -28,66 +28,66 @@ static void	*vector_memcpy(void *dest, void *src, size_t n)
 	return (dest);
 }
 
-t_vector	*vector_init(size_t initial_size, unsigned int data_type)
+t_vect	*vect_init(size_t initial_size, unsigned int data_type)
 {
-	t_vector	*vector;
+	t_vect	*vect;
 
 	if (initial_size == 0)
 		initial_size = 2;
-	vector = malloc(initial_size * sizeof(t_vector));
-	if (vector == NULL)
+	vect = malloc(initial_size * sizeof(t_vect));
+	if (vect == NULL)
 		return (NULL);
-	vector->table = malloc(initial_size * data_type);
-	if (vector->table == NULL)
+	vect->table = malloc(initial_size * data_type);
+	if (vect->table == NULL)
 	{
-		free(vector);
+		free(vect);
 		return (NULL);
 	}
-	vector->nmemb = 0;
-	vector->data_size = data_type;
-	vector->size = initial_size;
-	return (vector);
+	vect->nmemb = 0;
+	vect->data_size = data_type;
+	vect->size = initial_size;
+	return (vect);
 }
 
-void		vector_free(t_vector *vector, void (*del)(void*))
+void		vect_free(t_vect *vect, void (*del)(void*))
 {
 	size_t	i;
 
 	if (del != NULL)
 	{
 		i = 0;
-		while (i < vector->nmemb)
+		while (i < vect->nmemb)
 		{
-			del(((void**)vector->table)[i]);
+			del(((void**)vect->table)[i]);
 			i++;
 		}
 	}
-	free(vector->table);
-	free(vector);
+	free(vect->table);
+	free(vect);
 }
 
-static int	vector_realloc(t_vector *vector)
+static int	vect_realloc(t_vect *vect)
 {
 	void	*new_table;
 
-	vector->size *= 2;
-	new_table = malloc(vector->size * vector->data_size);
+	vect->size *= 2;
+	new_table = malloc(vect->size * vect->data_size);
 	if (new_table == NULL)
 		return (-1);
-	vector_memcpy(new_table, vector->table, vector->nmemb * vector->data_size);
-	free(vector->table);
-	vector->table = new_table;
+	vect_memcpy(new_table, vect->table, vect->nmemb * vect->data_size);
+	free(vect->table);
+	vect->table = new_table;
 	return (0);
 }
 
-int			vector_pushback(t_vector *vector, void *data)
+int			vect_pushback(t_vect *vect, void *data)
 {
-	if (vector->nmemb == vector->size)
+	if (vect->nmemb == vect->size)
 	{
-		if (vector_realloc(vector) == -1)
+		if (vect_realloc(vect) == -1)
 			return (-1);
 	}
-	vector_memcpy(vector->table + vector->nmemb, &data, vector->data_size);
-	vector->nmemb += 1;
+	vect_memcpy(vect->table + vect->nmemb, &data, vect->data_size);
+	vect->nmemb += 1;
 	return (0);
 }
