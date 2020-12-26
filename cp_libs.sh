@@ -16,9 +16,9 @@ LIBDIRS[1]=~/work/tools/vectorC/
 LIBS[1]=${LIBDIRS[1]}'libvect.a'
 HEADERS[1]=${LIBDIRS[1]}'libvect.h'
 
-# LIBDIRS[2]=~/work/tools/ft_printf/
-# LIBS[2]=${LIBDIRS[2]}'libftprintf.a'
-# HEADERS[2]=${LIBDIRS[2]}'ft_printf.h'
+LIBDIRS[2]=~/work/tools/ft_printf/
+LIBS[2]=${LIBDIRS[2]}'libftprintf.a'
+HEADERS[2]=${LIBDIRS[2]}'libftprintf.h'
 
 if [[ $1 == "re" ]]
 then
