@@ -34,7 +34,7 @@ t_vect	*vect_init(size_t initial_size, unsigned int data_type)
 
 	if (initial_size == 0)
 		initial_size = 2;
-	vect = malloc(initial_size * sizeof(t_vect));
+	vect = malloc(sizeof(t_vect));
 	if (vect == NULL)
 		return (NULL);
 	vect->table = malloc(initial_size * data_type);
@@ -82,12 +82,15 @@ static int	vect_realloc(t_vect *vect)
 
 int			vect_pushback(t_vect *vect, void *data)
 {
+	unsigned char	*ptr;
+
 	if (vect->nmemb == vect->size)
 	{
 		if (vect_realloc(vect) == -1)
 			return (-1);
 	}
-	vect_memcpy(vect->table + vect->nmemb, &data, vect->data_size);
+	ptr = ((unsigned char*)vect->table) + vect->nmemb * vect->data_size;
+	vect_memcpy(ptr, data, vect->data_size);
 	vect->nmemb += 1;
 	return (0);
 }
