@@ -1,6 +1,6 @@
 dir="./for-norme"
 m="Makefile"
-srcdir="./extra_functions ./main_part"
+srcdir="./extra_functions ./main_part ./extra_functions/math_functions"
 headers="./include/* ./libft.h"
 
 mkdir -p $dir

@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_double.h                                        :+:    :+:            */
+/*   ft_max.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:20:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 10:22:28 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/28 16:36:52 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/28 16:38:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DOUBLE_H
-# define FT_DOUBLE_H
-
-typedef union				u_double
+int	ft_max(int a, int b)
 {
-	double					value;
-	struct					s_bits
-	{
-		unsigned long long	mantissa : 52;
-		unsigned int		exponent : 11;
-		unsigned int		sign : 1;
-
-	}						bitfield;
-}							t_double;
-
-#endif
+	if (a > b)
+		return (a);
+	return (b);
+}

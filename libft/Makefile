@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/13 10:06:53 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/10 08:58:52 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/28 16:38:10 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(shell basename -a $(SRC:.c=.o)))
 
 # directories
 OBJDIR = obj
-SRCDIR = main_part extra_functions
+SRCDIR = main_part extra_functions extra_functions/math_functions
 IDIR = .
 
 #compilation
