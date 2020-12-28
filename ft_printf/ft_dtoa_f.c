@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 20:45:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/21 16:28:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 21:18:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ char			*ft_dtoa_f(double nbr, int precision)
 
 	d_union.value = nbr;
 	numlen = ft_numlen_dbl(nbr);
+	if (nbr == -10)
+		numlen++;
 	digits = (char*)malloc((numlen + precision + 2) * sizeof(char));
 	if (digits == NULL)
 		return (NULL);
