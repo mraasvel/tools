@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:41:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 14:31:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
+#include "../ft_printf/libftprintf.h"
 
 static void	free_strings(char **strings)
 {
@@ -96,8 +97,10 @@ int	memccpy_compare(const char *dst, const char *src, int c, size_t n)
 
 int	main(int argc, char **argv)
 {
-	printf("%f\n", ft_fmin(1.0, 1.2345));
-	printf("%f\n", ft_fmax(1.13452345, 1.0));
-	
+	printf("%d\n", ft_unumlen_base(-12, 16));
+	ft_putllu_base(-12, 10, 0, 0);
+	printf("\n");
+	printf("%llu\n", (unsigned long long)-12);
+	ft_printf("%llx\n", (unsigned long long)-12);
 	return (0);
 }
