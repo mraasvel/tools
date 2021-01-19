@@ -80,7 +80,7 @@ static int	clear_buffer(t_buffer *buffer, char **line, int *line_size)
 	return (ret);
 }
 
-static int	read_in_fd(int fd, char **line, t_buffer *buffer, int *line_size)
+static int	fill_buffer(int fd, char **line, t_buffer *buffer, int *line_size)
 {
 	ssize_t	read_ret;
 	t_ret	clear_ret;
@@ -120,7 +120,7 @@ int			get_next_line(int fd, char **line)
 	line_size = 0;
 	if (buffer.position != 0)
 	{
-		ret = clear_buffer(&buffer, line, &line_size);
+		ret = fill_buffer(&buffer, line, &line_size);
 		if (ret == error && line_size != 0)
 			free(*line);
 		if (ret == error)
@@ -128,7 +128,7 @@ int			get_next_line(int fd, char **line)
 		if (ret == line_read)
 			return (line_read);
 	}
-	ret = read_in_fd(fd, line, &buffer, &line_size);
+	ret = fill_buffer(fd, line, &buffer, &line_size);
 	if (ret == error && line_size != 0)
 		free(*line);
 	return (ret);
