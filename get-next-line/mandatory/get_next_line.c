@@ -128,7 +128,7 @@ int			get_next_line(int fd, char **line)
 		if (ret == line_read)
 			return (line_read);
 	}
-	ret = read_in_fd(fd, line, &buffer, &line_size);
+	ret = fill_buffer(fd, line, &buffer, &line_size);
 	if (ret == error && line_size != 0)
 		free(*line);
 	return (ret);
