@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/26 23:34:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/27 13:43:50 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 09:22:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,27 @@ static void	*gnl_memcpy(void *dest, void *src, size_t n)
 {
 	unsigned char	*d;
 	unsigned char	*s;
-	size_t			i;
 
-	i = 0;
 	d = dest;
 	s = src;
 	if (dest == src)
 		return (dest);
-	while (i < n)
+	while (n > 0)
 	{
-		d[i] = s[i];
-		i++;
+		*d = *s;
+		d++;
+		s++;
+		n--;
 	}
 	return (dest);
 }
+
+/*
+** 1. Set return value to line_read if new line was found,
+** otherwise there was no newline in this buffer and we should read until
+** we either find one, or we encounter EOF.
+** 2. Returns total bytes read (how much extra we should allocate for line)
+*/
 
 static int	scan_buffer(t_buffer *buffer, t_ret *ret)
 {
@@ -51,11 +58,18 @@ static int	scan_buffer(t_buffer *buffer, t_ret *ret)
 }
 
 /*
+** Clear buffer as in: "take data from buffer and put it into line"
 ** return: 1 for newline found.
 ** return: 0 for continue reading.
 ** return: -1 for error (malloc)
 ** Stores buffer up to newline or '\0' in line.
 ** Updates line_size and position.
+** If there was already data in line, it's copied over
+**
+** It would probably more efficient to treat line as if it was a string vector,
+** so instead of allocating the exact amount every time, double the size of line.
+** This would make it much faster for BUFFER_SIZES of 1 for example,
+** but BUFFER_SIZE=1 is always going to be inefficient anyway
 */
 
 static int	clear_buffer(t_buffer *buffer, char **line, int *line_size)
@@ -79,6 +93,11 @@ static int	clear_buffer(t_buffer *buffer, char **line, int *line_size)
 	(*line)[*line_size] = '\0';
 	return (ret);
 }
+
+/*
+** Fill buffer as in: "Read data into the buffer"
+** Loops read and stores data in buffer, which is then stored in line until a newline is found
+*/
 
 static int	fill_buffer(int fd, char **line, t_buffer *buffer, int *line_size)
 {
@@ -107,6 +126,7 @@ static int	fill_buffer(int fd, char **line, t_buffer *buffer, int *line_size)
 ** return: 0 for EOF read.
 ** return: -1 for error (read or malloc).
 ** An enum is used to determine return values
+** Position being equal to zero means that the buffer is empty, so we should clear it before reading again
 */
 
 int			get_next_line(int fd, char **line)
@@ -120,7 +140,7 @@ int			get_next_line(int fd, char **line)
 	line_size = 0;
 	if (buffer.position != 0)
 	{
-		ret = fill_buffer(&buffer, line, &line_size);
+		ret = clear_buffer(&buffer, line, &line_size);
 		if (ret == error && line_size != 0)
 			free(*line);
 		if (ret == error)

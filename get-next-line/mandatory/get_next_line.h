@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/26 23:35:27 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/27 18:51:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 09:23:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #  define BUFFER_SIZE 4096
 # endif
 
+/*
+** The enums make it easy to communicate using function returns
+*/
+
 typedef enum	e_ret
 {
 	error = -1,
@@ -24,6 +28,11 @@ typedef enum	e_ret
 	line_read,
 	cont_read
 }				t_ret;
+
+/*
+** Position = last newline position
+** It being zero means that the buffer has been cleared
+*/
 
 typedef struct	s_buffer
 {
