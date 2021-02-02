@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lft_gnl.c                                          :+:    :+:            */
+/*   ft_getline.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/10 09:00:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/10 09:00:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 17:39:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "lft_gnl.h"
+#include "ft_getline.h"
 
 static void	*gnl_memcpy(void *dest, void *src, size_t n)
 {
