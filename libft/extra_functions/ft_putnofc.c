@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 10:18:24 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/15 12:00:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:27:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_tenth_putnofc(size_t n, unsigned char c)
 ** Return: bytes written or -1 on error.
 */
 
-ssize_t		ft_putnofc(size_t n, unsigned char c)
+ssize_t	ft_putnofc(size_t n, unsigned char c)
 {
 	char	*buffer;
 

@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_getline.h                                       :+:    :+:            */
+/*   exit_program.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/10 08:59:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/16 23:30:26 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/14 20:15:15 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/14 20:40:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GETLINE_H
-# define FT_GETLINE_H
+#include <stdlib.h>
+#include "prototypes.h"
+#include "base.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
-
-typedef enum e_ret
-{
-	error = -1,
-	eof_read,
-	line_read,
-	cont_read
-}	t_ret;
-
-typedef struct s_buffer
-{
-	char	buffer[BUFFER_SIZE + 1];
-	int		position;
-}	t_buffer;
-
-int				ft_getline(int fd, char **line);
-
-#endif
+void ExitProgram(Data *data) {
+	if (data->error.type != success) {
+		FtPerror(data->error.type, data->error.message);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
+}

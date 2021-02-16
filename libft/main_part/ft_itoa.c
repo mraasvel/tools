@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 09:58:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/02 10:19:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:17:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	ft_numlen(int n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	size_t			len;
 	char			*nbr_string;

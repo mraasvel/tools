@@ -6,20 +6,20 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/17 12:26:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 12:52:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:28:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_double.h"
 
-int			ft_abs(int a)
+int	ft_abs(int a)
 {
 	if (a < 0)
 		return (-a);
 	return (a);
 }
 
-double		ft_fabs(double x)
+double	ft_fabs(double x)
 {
 	t_double	d;
 

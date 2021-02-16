@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 10:49:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/13 11:20:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:21:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	output_llu(unsigned long long nbr)
 ** Return: bytes written to stdout, or -1 on error
 */
 
-int			ft_putllu(unsigned long long nbr, int precision)
+int	ft_putllu(unsigned long long nbr, int precision)
 {
 	int	numlen;
 
@@ -51,5 +51,7 @@ int			ft_putllu(unsigned long long nbr, int precision)
 	}
 	else if (output_llu(nbr) == -1)
 		return (-1);
-	return (precision > numlen ? precision : numlen);
+	if (precision > numlen)
+		return (precision);
+	return (numlen);
 }

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/10 09:00:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 17:39:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:23:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ static int	scan_buffer(t_buffer *buffer, t_ret *ret)
 		buffer->position = 0;
 	else
 		buffer->position = i + 1;
-	*ret = buffer->buffer[i] == '\n' ? line_read : cont_read;
+	if (buffer->buffer[i] == '\n')
+		*ret = line_read;
+	else
+		*ret = cont_read;
 	return (bytes_read);
 }
 
@@ -109,7 +112,7 @@ static int	fill_buffer(int fd, char **line, t_buffer *buffer, int *line_size)
 ** An enum is used to determine return values
 */
 
-int			ft_getline(int fd, char **line)
+int	ft_getline(int fd, char **line)
 {
 	static t_buffer	buffer;
 	t_ret			ret;

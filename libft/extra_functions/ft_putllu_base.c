@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 22:03:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/18 11:26:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:26:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*get_base(int base, int upcase)
 {
 	char	*base_chars;
 	int		i;
+	int		digit;
 
 	base_chars = malloc(base * sizeof(char));
 	if (base_chars == 0)
@@ -25,10 +26,12 @@ static char	*get_base(int base, int upcase)
 	i = 0;
 	while (i < base)
 	{
-		if (upcase == 0)
-			base_chars[i] = i < 10 ? i + '0' : i + 'a' - 10;
-		else
-			base_chars[i] = i < 10 ? i + '0' : i + 'A' - 10;
+		digit = i + 'a' - 10;
+		if (i < 10)
+			digit = i + '0';
+		else if (upcase == 1)
+			digit = i + 'A' - 10;
+		base_chars[i] = digit;
 		i++;
 	}
 	return (base_chars);
@@ -63,8 +66,8 @@ static int	output_llu_base(unsigned long long nbr, int base, char *base_chars)
 ** Returns total chars printed or -1 on error.
 */
 
-int			ft_putllu_base(unsigned long long nbr,
-			int base, int precision, int upcase)
+int	ft_putllu_base(unsigned long long nbr,
+		int base, int precision, int upcase)
 {
 	char	*base_chars;
 	int		numlen;
@@ -81,5 +84,7 @@ int			ft_putllu_base(unsigned long long nbr,
 	if (output_llu_base(nbr, base, base_chars) == -1)
 		return (-1);
 	free(base_chars);
-	return (numlen > precision ? numlen : precision);
+	if (precision > numlen)
+		return (precision);
+	return (numlen);
 }

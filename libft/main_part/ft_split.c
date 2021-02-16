@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 21:02:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 17:44:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:15:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	ft_count_substrings(char const *s, char c)
 	return (count);
 }
 
-static void		ft_free_strings(char **strings, unsigned int index)
+static void	ft_free_strings(char **strings, unsigned int index)
 {
 	while (index > 0)
 	{
@@ -41,7 +41,7 @@ static void		ft_free_strings(char **strings, unsigned int index)
 	free(strings);
 }
 
-static char		**find_substrings(char **strings, char const *s, char c)
+static char	**find_substrings(char **strings, char const *s, char c)
 {
 	unsigned int	i;
 	char const		*end;
@@ -69,7 +69,7 @@ static char		**find_substrings(char **strings, char const *s, char c)
 	return (strings);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**strings;
 	size_t			string_count;

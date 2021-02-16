@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 17:05:37 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/27 17:45:34 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:23:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static char	**fill_strings(char **strings, const char *src, const char *set)
 ** Will split string based on seperators in set.
 */
 
-char		**ft_split_set(const char *src, const char *set)
+char	**ft_split_set(const char *src, const char *set)
 {
 	char	**strings;
 	int		string_count;

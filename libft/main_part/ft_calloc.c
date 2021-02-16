@@ -6,14 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 14:45:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 08:46:23 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:18:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void		*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void			*m;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_unumlen.c                                       :+:    :+:            */
+/*   ft_unumlen_base.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 10:14:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/13 10:15:37 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:22:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	ft_unumlen_base(unsigned long long nbr, int base)
 {
-	int len;
+	int	len;
 
 	if (nbr == 0)
 		return (1);

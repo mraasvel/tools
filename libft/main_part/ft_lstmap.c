@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/28 16:35:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/03 12:11:27 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:19:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 			return (0);
 		}
 		if (new->content == 0)
-			ft_lstdelone(new, (void*)0);
+			ft_lstdelone(new, (void*) 0);
 		else
 			ft_lstadd_back(&start, new);
 		lst = lst->next;

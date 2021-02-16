@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_getline.h                                       :+:    :+:            */
+/*   base.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/10 08:59:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/16 23:30:26 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/14 18:32:57 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/15 21:15:31 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GETLINE_H
-# define FT_GETLINE_H
+#ifndef BASE_H
+# define BASE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
+typedef enum Bool Bool;
+typedef enum ErrNum ErrNum;
+typedef struct Data Data;
+typedef struct ErrorData ErrorData;
 
-typedef enum e_ret
-{
-	error = -1,
-	eof_read,
-	line_read,
-	cont_read
-}	t_ret;
+enum Bool {
+	false,
+	true
+};
 
-typedef struct s_buffer
-{
-	char	buffer[BUFFER_SIZE + 1];
-	int		position;
-}	t_buffer;
+enum ErrNum {
+	success,
+	invalid_argc,
+	invalid_arg,
+	not_in_base,
+	malloc_error
+};
 
-int				ft_getline(int fd, char **line);
+struct ErrorData {
+	ErrNum type;
+	const char* message;
+};
+
+struct Data {
+	ErrorData error;
+	Bool flags[15];
+	int base_from;
+	unsigned long long num;
+};
 
 #endif

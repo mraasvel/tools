@@ -6,19 +6,19 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 12:56:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/14 09:47:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:16:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 static int	atoi_isspace(int c)
 {
 	if (c == '\r' || c == '\f' || c == '\n'
-	|| c == '\v' || c == '\t' || c == ' ')
+		|| c == '\v' || c == '\t' || c == ' ')
 		return (8192);
 	return (0);
 }
 
-int			ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	nbr;
 	int	negative;

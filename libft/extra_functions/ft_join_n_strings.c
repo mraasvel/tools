@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 13:59:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 14:05:51 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:27:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_total_len(int cnt, va_list start)
 	return (total_len);
 }
 
-char		*ft_join_n_strings(int cnt, ...)
+char	*ft_join_n_strings(int cnt, ...)
 {
 	va_list	start;
 	char	*big_string;

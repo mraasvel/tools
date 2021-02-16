@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 13:37:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 17:45:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:15:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	find_substr_len(char const *s1, char const *set)
 	return (len + 1);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	start;
 	size_t			len;

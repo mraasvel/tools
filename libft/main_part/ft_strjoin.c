@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 20:23:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/09 22:33:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:20:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char		*result_string;
 	size_t		l1;

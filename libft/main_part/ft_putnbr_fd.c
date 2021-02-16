@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:23:35 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 11:23:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:17:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_putnbr_fd_output(unsigned int n, int fd)
 	}
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == 0)
 	{

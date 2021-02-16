@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_getline.h                                       :+:    :+:            */
+/*   ft_strcase.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/10 08:59:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/16 23:30:26 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/14 21:08:01 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/14 21:09:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GETLINE_H
-# define FT_GETLINE_H
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
-
-typedef enum e_ret
+void	ft_strupcase(char *str)
 {
-	error = -1,
-	eof_read,
-	line_read,
-	cont_read
-}	t_ret;
+	size_t	i;
 
-typedef struct s_buffer
+	i = 0;
+	while (str[i] != '\0')
+	{
+		str[i] = ft_toupper(str[i]);
+		i++;
+	}
+}
+
+void	ft_strlowcase(char *str)
 {
-	char	buffer[BUFFER_SIZE + 1];
-	int		position;
-}	t_buffer;
+	size_t	i;
 
-int				ft_getline(int fd, char **line);
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+}

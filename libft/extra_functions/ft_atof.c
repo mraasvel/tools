@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 15:08:36 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 15:25:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:27:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static double	get_value(char *str)
 	return (num);
 }
 
-double			ft_atof(char *str)
+double	ft_atof(char *str)
 {
 	t_double	nbr;
 	size_t		i;

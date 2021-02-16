@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 20:43:10 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/14 20:46:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:28:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ ssize_t	ft_putstr_p(char *str, ssize_t precision)
 	if (precision == 0)
 		return (0);
 	len = ft_strlen(str);
-	len = len < precision ? len : precision;
+	if (precision < len)
+		len = precision;
 	return (write(1, str, len));
 }

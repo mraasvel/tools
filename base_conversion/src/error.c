@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_getline.h                                       :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/10 08:59:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/16 23:30:26 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/14 19:11:43 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/15 21:15:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GETLINE_H
-# define FT_GETLINE_H
+#include <stdio.h>
+#include "base.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
+void FtPerror(ErrNum type, const char* message) {
+	static const char* table[] = {
+		"Success",
+		"Invalid number of arguments",
+		"Invalid argument",
+		"Number doesn't belong to given base",
+		"Malloc failed"
+	};
 
-typedef enum e_ret
-{
-	error = -1,
-	eof_read,
-	line_read,
-	cont_read
-}	t_ret;
-
-typedef struct s_buffer
-{
-	char	buffer[BUFFER_SIZE + 1];
-	int		position;
-}	t_buffer;
-
-int				ft_getline(int fd, char **line);
-
-#endif
+	if (message != NULL) {
+		printf("%s: %s\n", table[type], message);
+	} else {
+		printf("%s\n", table[type]);
+	}
+}

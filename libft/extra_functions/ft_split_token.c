@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/05 16:47:16 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/05 17:46:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/16 23:21:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static char	**fill_strings(char **strings, const char *src, const char *token)
 ** "aaabbaaab" with token "bb" will return "aaa" "aaab" "NULL"
 */
 
-char		**ft_split_token(const char *src, const char *token)
+char	**ft_split_token(const char *src, const char *token)
 {
 	char	**strings;
 	int		string_count;
