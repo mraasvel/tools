@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:50:46 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/22 17:38:43 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/19 23:07:43 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@ OBJ = $(SRC:.c=.o)
 # Directories
 LIBFTDIR = libft
 
-all: $(NAME)
+.PHONY: all
+all:
+	@$(MAKE) -C $(LIBFTDIR)
+	@$(MAKE) $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) $(NAME)
@@ -50,10 +53,17 @@ $(NAME): $(LIBFT) $(OBJ)
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
+.PHONY: clean fclean re bonus
 clean:
+	$(MAKE) clean -C $(LIBFTDIR)
 	rm -f $(OBJ)
-fclean: clean
+fclean:
+	$(MAKE) clean
+	$(MAKE) fclean -C $(LIBFTDIR)
 	rm -f $(NAME)
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-bonus: $(NAME)
+bonus:
+	@$(MAKE) all
