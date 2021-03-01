@@ -1,6 +1,15 @@
 SRCDIR='src'
 INCLUDEDIR='includes'
 
+echo "Create new project in current directory?"
+read LINE
+declare -a ARGS=("y" "Y" "yes" "Yes" "YES")
+if [[ ! " ${ARGS[@]} " =~ " ${LINE} " ]]; then
+	echo "Aborting..."
+	exit
+fi
+
+
 mkdir -p $SRCDIR
 mkdir -p $INCLUDEDIR
 touch ${SRCDIR}/main.c
