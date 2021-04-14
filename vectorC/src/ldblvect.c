@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/19 20:55:24 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 22:51:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/04/14 16:32:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	*ldblvect_memcpy(void *dest, void *src, size_t n)
 		return (dest);
 	while (i < n)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);
@@ -48,7 +48,7 @@ t_ldblvect	*ldblvect_init(size_t initial_size)
 	return (vector);
 }
 
-void		ldblvect_free(t_ldblvect *vector)
+void	ldblvect_free(t_ldblvect *vector)
 {
 	free(vector->table);
 	free(vector);
@@ -62,13 +62,14 @@ static int	ldblvect_realloc(t_ldblvect *vector)
 	new_table = malloc(vector->size * sizeof(long double));
 	if (new_table == NULL)
 		return (-1);
-	ldblvect_memcpy(new_table, vector->table, vector->nmemb * sizeof(long double));
+	ldblvect_memcpy(new_table,
+		vector->table, vector->nmemb * sizeof(long double));
 	free(vector->table);
 	vector->table = new_table;
 	return (0);
 }
 
-int			ldblvect_pushback(t_ldblvect *vector, long double data)
+int	ldblvect_pushback(t_ldblvect *vector, long double data)
 {
 	if (vector->nmemb == vector->size)
 	{

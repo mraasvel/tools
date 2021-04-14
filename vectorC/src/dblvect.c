@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/19 20:55:24 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 22:52:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/04/14 16:31:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	*dblvect_memcpy(void *dest, void *src, size_t n)
 		return (dest);
 	while (i < n)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);
@@ -48,7 +48,7 @@ t_dblvect	*dblvect_init(size_t initial_size)
 	return (vector);
 }
 
-void		dblvect_free(t_dblvect *vector)
+void	dblvect_free(t_dblvect *vector)
 {
 	free(vector->table);
 	free(vector);
@@ -68,7 +68,7 @@ static int	dblvect_realloc(t_dblvect *vector)
 	return (0);
 }
 
-int			dblvect_pushback(t_dblvect *vector, double data)
+int	dblvect_pushback(t_dblvect *vector, double data)
 {
 	if (vector->nmemb == vector->size)
 	{

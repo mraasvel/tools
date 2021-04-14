@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/19 20:55:24 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 22:52:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/04/14 16:31:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	*fltvect_memcpy(void *dest, void *src, size_t n)
 		return (dest);
 	while (i < n)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);
@@ -48,7 +48,7 @@ t_fltvect	*fltvect_init(size_t initial_size)
 	return (vector);
 }
 
-void		fltvect_free(t_fltvect *vector)
+void	fltvect_free(t_fltvect *vector)
 {
 	free(vector->table);
 	free(vector);
@@ -68,7 +68,7 @@ static int	fltvect_realloc(t_fltvect *vector)
 	return (0);
 }
 
-int			fltvect_pushback(t_fltvect *vector, float data)
+int	fltvect_pushback(t_fltvect *vector, float data)
 {
 	if (vector->nmemb == vector->size)
 	{

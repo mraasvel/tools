@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:55:22 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 22:52:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/04/14 16:33:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	*vect_memcpy(void *dest, void *src, size_t size)
 	i = 0;
 	while (i < size)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);
@@ -34,10 +34,11 @@ t_uint64vect	*uint64vect_init(size_t initial_size)
 
 	if (initial_size == 0)
 		initial_size = 2;
-	vector = (t_uint64vect*)malloc(1 * sizeof(t_uint64vect));
+	vector = (t_uint64vect *)malloc(1 * sizeof(t_uint64vect));
 	if (vector == NULL)
 		return (NULL);
-	vector->table = (unsigned long long*)malloc(initial_size * sizeof(unsigned long long));
+	vector->table = (unsigned long long *)malloc(
+			initial_size * sizeof(unsigned long long));
 	if (vector->table == NULL)
 	{
 		free(vector);
@@ -48,7 +49,7 @@ t_uint64vect	*uint64vect_init(size_t initial_size)
 	return (vector);
 }
 
-void		uint64vect_free(t_uint64vect *vector)
+void	uint64vect_free(t_uint64vect *vector)
 {
 	free(vector->table);
 	free(vector);
@@ -60,7 +61,8 @@ static int	uint64vect_realloc(t_uint64vect *vector)
 	unsigned long long	*new_table;
 
 	new_size = vector->size * 2;
-	new_table = (unsigned long long*)malloc(new_size * sizeof(unsigned long long));
+	new_table = (unsigned long long *)malloc(
+			new_size * sizeof(unsigned long long));
 	if (new_table == NULL)
 		return (-1);
 	vect_memcpy(new_table, vector->table, vector->nmemb);
@@ -70,7 +72,7 @@ static int	uint64vect_realloc(t_uint64vect *vector)
 	return (0);
 }
 
-int			uint64vect_pushback(unsigned long long value, t_uint64vect *vector)
+int	uint64vect_pushback(unsigned long long value, t_uint64vect *vector)
 {
 	if (vector->nmemb == vector->size)
 	{
