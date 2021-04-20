@@ -1,58 +1,61 @@
+# Executable
+NAME := a.out
 
-# Variables
-NAME = a.out
-SRC = $(shell find $(SRCDIR) -name "*.c" -type f -exec basename {} \;)
-OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-HEADERS = $(shell find $(IDIR) -name "*.h" -type f)
-LIBS = $(shell find $(LIBDIR) -name "*.a" -type f)
-DEPS = $(HEADERS) Makefile
 
 # Directories
-SRCDIR = src
-OBJDIR = obj
-IDIR = includes
-LIBDIR = libs
-vpath %.c $(SRCDIR)
-vpath %.o $(OBJDIR)
-vpath %.h $(IDIR)
-vpath %.a $(LIBDIR)
+SDIR := src
+ODIR := obj/
+DDIR := dep/
+IDIR := includes
+LDIR := libs
+
+# Files
+SRC := $(shell find $(SDIR) -name "*.c" -type f)
+OBJ := $(patsubst $(SDIR)/%.c,$(ODIR)%.o,$(SRC))
+DEP := $(patsubst $(SDIR)/%.c,$(DDIR)%.d,$(SRC))
 
 # Compilation
 CC = gcc
-CFLAGS = -Wall -Wextra
 IFLAGS = -I$(IDIR)
-LIBFLAGS =
-
-ifdef DEBUG
-CFLAGS += -O0 -g -fsanitize=address
+LFLAGS =
+CFLAGS = -Wall -Wextra
+ifeq ($(shell uname -s),Linux)
+DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
 else
-CFLAGS += -O3
+DFLAGS := -O0 -g -fsanitize=address
 endif
+CFLAGS += $(DFLAGS)
 
+RM = /bin/rm -f
 
+# Rules
 .PHONY: all
 all:
-	$(MAKE) libs
-	$(MAKE) $(NAME)
+	$(MAKE) -j4 $(NAME)
 
+# Compilation
 $(NAME): $(OBJ)
-	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBFLAGS)
-$(OBJDIR)/%.o:%.c $(DEPS) | $(OBJDIR)
-	$(CC) -c -o $@ $(CFLAGS) $(IFLAGS) $<
+	@echo Compiling $@
+	@$(CC) -o $@ $^ $(CFLAGS) $(LFLAGS)
+$(ODIR)%.o: $(SDIR)/%.c
+	@echo Compiling $@
+	@mkdir -p $(@D)
+	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
+$(DDIR)%.d: $(SDIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $< -MM -MF $@ -MT $(ODIR)$*.o $(IFLAGS)
 
-.PHONY: libs
-libs:
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-
-
-.PHONY: clean fclean re debug
+# Cleanup
+.PHONY: clean fclean re cleanall
 clean:
-	rm -f $(OBJ)
-fclean:
-	$(MAKE) clean
-	rm -f $(NAME)
+	$(RM) $(OBJ)
+	$(RM) $(DEP)
+fclean: clean
+	$(RM) $(NAME)
+cleanall: fclean
+	$(RM) -r $(DDIR)
+	$(RM) -r $(ODIR)
 re: fclean
 	$(MAKE) all
-debug:
-	$(MAKE) re DEBUG=1
+
+-include $(DEP)
