@@ -13,12 +13,14 @@ LDIR := libs
 SRC := $(shell find $(SDIR) -name "*.c" -type f)
 OBJ := $(patsubst $(SDIR)/%.c,$(ODIR)%.o,$(SRC))
 DEP := $(patsubst $(SDIR)/%.c,$(DDIR)%.d,$(SRC))
+HDF := $(shell find $(IDIR) -name "*.h" -type f)
 
 # Compilation
 CC = gcc
 IFLAGS = -I$(IDIR)
 LFLAGS =
-CFLAGS = -Wall -Wextra
+# CFLAGS = -Wall -Wextra
+CFLAGS =
 ifeq ($(shell uname -s),Linux)
 DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
 else
@@ -34,10 +36,11 @@ all:
 	$(MAKE) -j4 $(NAME)
 
 # Compilation
-$(NAME): $(OBJ)
+$(NAME): $(SRC) $(HDF)
 	@echo Compiling $@
-	@$(CC) -o $@ $^ $(CFLAGS) $(LFLAGS)
-$(ODIR)%.o: $(SDIR)/%.c
+	@$(MAKE) $(OBJ)
+	@$(CC) -o $@ $(OBJ) $(CFLAGS) $(LFLAGS)
+$(OBJ): $(ODIR)%.o: $(SDIR)/%.c
 	@echo Compiling $@
 	@mkdir -p $(@D)
 	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
