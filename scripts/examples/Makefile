@@ -51,13 +51,10 @@ $(DDIR)%.d: $(SDIR)/%.c
 # Cleanup
 .PHONY: clean fclean re cleanall
 clean:
-	$(RM) $(OBJ)
-	$(RM) $(DEP)
+	$(RM) -r $(ODIR)
+	$(RM) -r $(DDIR)
 fclean: clean
 	$(RM) $(NAME)
-cleanall: fclean
-	$(RM) -r $(DDIR)
-	$(RM) -r $(ODIR)
 re: fclean
 	$(MAKE) all
 

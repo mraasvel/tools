@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/14 23:34:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/03/20 12:39:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strnstr(const char *big,
-					const char *little, size_t len);
+						const char *little, size_t len);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *nptr);
 int					ft_isalpha(int c);
@@ -61,12 +61,12 @@ void				ft_putnbr_fd(int n, int fd);
 ** Bonus Part
 */
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 
-}					t_list;
+}	t_list;
 
 /*
 ** The bonus functions
@@ -81,7 +81,7 @@ void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void*));
 t_list				*ft_lstmap(t_list *lst,
-					void *(*f)(void*), void (*del)(void*));
+						void *(*f)(void*), void (*del)(void*));
 
 /*
 ** Additional functions
@@ -97,12 +97,15 @@ int					ft_putstr(char *str);
 char				*ft_join_n_strings(int cnt, ...);
 char				**ft_split_set(const char *src, const char *set);
 char				**ft_split_token(const char *src, const char *token);
+size_t				ft_count_strings(char **strings);
 char				*ft_strstr(const char *haystack, const char *needle);
 void				ft_free_split(char **strings);
-int					ft_strcmp(char *s1, char *s2);
+int					ft_strcmp(const char *s1, const char *s2);
 void				ft_swap_ptr(void *a, void *b);
-void	ft_strlowcase(char *str);
-void	ft_strupcase(char *str);
+void				ft_strlowcase(char *str);
+void				ft_strupcase(char *str);
+char				*ft_strcpy(char *dest, const char *src);
+int					ft_strchri(const char *s, int c);
 
 /*
 ** get_next_line libft version.
@@ -119,11 +122,12 @@ int					ft_numlen_base(long long nbr, int base);
 int					ft_putll(long long nbr, int precision);
 int					ft_putllu(unsigned long long nbr, int precision);
 int					ft_putllu_base(unsigned long long nbr,
-					int base, int precision, int upcase);
+						int base, int precision, int upcase);
 char				*ft_llutoa(unsigned long long nbr, int min_len);
 unsigned long long	ft_atoull(char *str);
 double				ft_atof(char *str);
 unsigned long long	ft_atoull_base(const char *str, int base);
+long long int		ft_strtoll(const char *nptr);
 
 /*
 ** math functions
