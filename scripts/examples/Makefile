@@ -4,23 +4,23 @@ NAME := a.out
 
 # Directories
 SDIR := src
-ODIR := obj/
-DDIR := dep/
+ODIR := obj
+DDIR := dep
 IDIR := includes
 LDIR := libs
 
 # Files
 SRC := $(shell find $(SDIR) -name "*.c" -type f)
-OBJ := $(patsubst $(SDIR)/%.c,$(ODIR)%.o,$(SRC))
-DEP := $(patsubst $(SDIR)/%.c,$(DDIR)%.d,$(SRC))
+OBJ := $(patsubst $(SDIR)/%.c,$(ODIR)/%.o,$(SRC))
+DEP := $(patsubst $(SDIR)/%.c,$(DDIR)/%.d,$(SRC))
 HDF := $(shell find $(IDIR) -name "*.h" -type f)
 
 # Compilation
 CC = gcc
 IFLAGS = -I$(IDIR)
 LFLAGS =
-# CFLAGS = -Wall -Wextra
-CFLAGS =
+CFLAGS = -Wall -Wextra
+
 ifeq ($(shell uname -s),Linux)
 DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
 else
@@ -36,17 +36,17 @@ all:
 	$(MAKE) -j4 $(NAME)
 
 # Compilation
-$(NAME): $(SRC) $(HDF)
+$(NAME): $(OBJ)
 	@echo Compiling $@
 	@$(MAKE) $(OBJ)
 	@$(CC) -o $@ $(OBJ) $(CFLAGS) $(LFLAGS)
-$(OBJ): $(ODIR)%.o: $(SDIR)/%.c
+$(OBJ): $(ODIR)/%.o: $(SDIR)/%.c
 	@echo Compiling $@
 	@mkdir -p $(@D)
 	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
-$(DDIR)%.d: $(SDIR)/%.c
+$(DDIR)/%.d: $(SDIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $< -MM -MF $@ -MT $(ODIR)$*.o $(IFLAGS)
+	@$(CC) $< -MM -MF $@ -MT $(ODIR)/$*.o $(IFLAGS)
 
 # Cleanup
 .PHONY: clean fclean re cleanall
