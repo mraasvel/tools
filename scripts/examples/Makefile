@@ -37,13 +37,10 @@ all:
 
 # Compilation
 $(NAME): $(OBJ)
-	@echo Compiling $@
-	@$(MAKE) $(OBJ)
-	@$(CC) -o $@ $(OBJ) $(CFLAGS) $(LFLAGS)
+	$(CC) -o $@ $(OBJ) $(CFLAGS) $(LFLAGS)
 $(OBJ): $(ODIR)/%.o: $(SDIR)/%.c
-	@echo Compiling $@
 	@mkdir -p $(@D)
-	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
 $(DDIR)/%.d: $(SDIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $< -MM -MF $@ -MT $(ODIR)/$*.o $(IFLAGS)
