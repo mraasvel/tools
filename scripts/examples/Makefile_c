@@ -22,11 +22,14 @@ LFLAGS =
 CFLAGS = -Wall -Wextra
 
 ifeq ($(shell uname -s),Linux)
-DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
+	DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
 else
-DFLAGS := -O0 -g -fsanitize=address
+	DFLAGS := -O0 -g -fsanitize=address
 endif
-CFLAGS += $(DFLAGS)
+
+ifdef DEBUG
+	CFLAGS += $(DFLAGS)
+endif
 
 RM = /bin/rm -f
 
@@ -54,5 +57,10 @@ fclean: clean
 	$(RM) $(NAME)
 re: fclean
 	$(MAKE) all
+
+# Debug
+.PHONY: debug
+debug: fclean
+	$(MAKE) all DEBUG=1
 
 -include $(DEP)
