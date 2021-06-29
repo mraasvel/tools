@@ -19,7 +19,7 @@ HDF := $(shell find $(IDIR) -name "*.hpp" -type f)
 CC = clang++
 IFLAGS = -I$(IDIR)
 LFLAGS =
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 ifeq ($(shell uname -s),Linux)
 	DFLAGS := -O0 -g -fsanitize=address -fsanitize=leak
